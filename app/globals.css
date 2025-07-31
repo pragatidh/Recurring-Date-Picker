@@ -1,0 +1,114 @@
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
+
+:root {
+  --background: #ffffff;
+  --foreground: #020202;
+  --font-sans: 'Arial', sans-serif;
+  --font-mono: 'Courier New', monospace;
+  --accent: #0d14e7;
+  --highlight: #ffdfc4;
+  --border: #000000;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #ffffff;
+    --foreground: #020202;
+    --accent: #0d14e7;
+    --highlight: #ffdfc4;
+    --border: #000000;
+  }
+}
+
+body {
+  background: linear-gradient(135deg, var(--background), var(--highlight));
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  transition: all 0.3s ease-in-out;
+  padding: 2rem;
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-family: 'Georgia', serif;
+  font-weight: bold;
+  color: var(--accent);
+  text-shadow: 1px 1px 2px rgba(65, 239, 34, 0.1);
+}
+
+/* Decorative Containers */
+.card {
+  background-color: white;
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: 0 4px 8px rgb(243, 228, 228);
+  padding: 2rem;
+  margin: 1.5rem 0;
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 12px rgb(236, 224, 224);
+}
+
+/* Stylish Buttons */
+.btn {
+  background-color: var(--accent);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 999px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--foreground);
+}
+
+/* Links */
+a {
+  color: var(--accent);
+  text-decoration: underline dashed;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: var(--foreground);
+}
+
+/* Code Blocks */
+code {
+  font-family: var(--font-mono);
+  background-color: #0cdd2f;
+  padding: 0.2rem 0.4rem;
+  border-radius: 4px;
+  color: #d6336c;
+}
+
+/* Animated Background Accent */
+body::after {
+  content: '';
+  position: fixed;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle at 20% 20%, var(--accent), transparent 40%),
+              radial-gradient(circle at 80% 80%, var(--highlight), transparent 40%);
+  z-index: -1;
+  opacity: 0.1;
+  animation: floatBG 20s ease-in-out infinite;
+}
+
+@keyframes floatBG {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-20px, 20px);
+  }
+}
